@@ -20,8 +20,9 @@ function TodoListComponent() {
           </div>
           <div className='mt-8'>
             {/* TODO add tasks here        */}
-            <Task />
-            <Task />
+            {tasks.map((task, index) => {
+              return <Task key={index} type={task.type} name={task.name} limitDate={task.limitDate} estimatedTime={task.estimatedTime} />
+           })}
           </div>
           <div className='absolute bottom-4 right-4'>
             <button id='add-task' onClick={() => setIsOpen(true)}>

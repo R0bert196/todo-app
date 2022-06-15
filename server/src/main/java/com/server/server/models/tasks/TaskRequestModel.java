@@ -11,7 +11,7 @@ import lombok.*;
 public class TaskRequestModel {
 
     private String type;
-    private String taskName;
+    private String name;
     private String limitDate;
     private String estimatedTime;
 

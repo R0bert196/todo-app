@@ -4,7 +4,7 @@ import { appState } from "../state";
 
 const defaulFormFields = {
   type: "",
-  taskName: "",
+  name: "",
   limitDate: "",
   estimatedTime: "",
 };
@@ -20,7 +20,7 @@ function CreateTaskComponent() {
   const [tasks, setTasks] = useAtom(appState.tasks);
 
 
-  const { type, taskName, limitDate, estimatedTime } = formFields;
+  const { type, name, limitDate, estimatedTime } = formFields;
 
 
   const handleChange = (event) => {
@@ -67,8 +67,8 @@ function CreateTaskComponent() {
               <input
                 type='text'
                 onChange={handleChange}
-                name='taskName'
-                value={taskName}
+                name='name'
+                value={name}
               />
             </label>
           </div>

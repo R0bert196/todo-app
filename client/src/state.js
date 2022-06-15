@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-const tasks = atom("");
+const tasks = atom([]);
 
 
 export const appState = { tasks };

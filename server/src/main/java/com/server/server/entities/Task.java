@@ -20,7 +20,7 @@ public class Task {
     )
     private long id;
     private String type;
-    private String taskName;
+    private String name;
     private LocalDate limitDate;
     private long estimatedTime;
 

@@ -24,7 +24,7 @@ public class TaskService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-d");
         Task task = Task.builder()
                 .estimatedTime(Long.parseLong(taskRequestModel.getEstimatedTime()))
-                .taskName(taskRequestModel.getTaskName())
+                .name(taskRequestModel.getName())
                 .type(taskRequestModel.getType())
                 .limitDate(LocalDate.parse(taskRequestModel.getLimitDate(), formatter))
                 .build();
