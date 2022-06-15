@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import CreateTaskComponent from "./CreateTaskComponent";
-import ModalComponent from "./ModalComponent";
+import ModalComponent from "./ModalComponent"
 import SortingButtonComponent from "./SortingButtonComponent";
+
+import { useAtom } from "jotai";
+import { appState } from "../state";
 
 
 function TodoListComponent() {
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const[tasks] = useAtom(appState.tasks);
 
   return (
     <div>

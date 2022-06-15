@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import CreateTaskComponent from "./CreateTaskComponent";
+import CreateTaskComponent from "./CreateTaskComponent"
 
 
 const customStyles = {
@@ -15,8 +15,6 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 function ModalComponent({ modalIsOpen, setIsOpen }) {
-
-
 
   function openModal() {
     setIsOpen(true);
@@ -34,6 +32,8 @@ return (
       style={customStyles}
     >
       <CreateTaskComponent />
+      {/* <CreateTaskComponent /> */}
+
     </Modal>
   </div>
 );

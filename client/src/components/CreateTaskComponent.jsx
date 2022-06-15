@@ -9,7 +9,7 @@ const defaulFormFields = {
 
 const currentDate = new Date().toLocaleDateString("en-ca");
 
-function CreateTaskComponent() {
+function CreateTaskComponent({ }) {
 
   const [formFields, setFormFields] = useState(defaulFormFields);
 
@@ -24,8 +24,19 @@ function CreateTaskComponent() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(type, taskName);
+    console.log(formFields);
+    const response = await fetch("/api/add-task", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        formFields
+      }
+    });
   }
+
+  // setTasks(response.data);
 
   return (
     <>
