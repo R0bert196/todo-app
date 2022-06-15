@@ -17,9 +17,9 @@ function Task({ type, name, limitDate, estimatedTime }) {
             <div className='border-l pl-1 w-28 text-center h-2/4'>
                 <p>4 zile ramase</p> 
             </div>
-            <div className='border-l pl-1 h-2/4'>
-                <MaterialIcon icon="done" size='medium' /> 
-                <MaterialIcon icon="delete" size='medium' />
+              <div className='border-l pl-1 h-2/4 flex gap-2'>
+                <span className='cursor-pointer'><MaterialIcon icon="done" size='large' /></span>
+                <span className='cursor-pointer'><MaterialIcon icon="delete" size='large' /></span>
             </div>
         </div>
         

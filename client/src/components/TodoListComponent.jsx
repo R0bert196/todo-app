@@ -13,7 +13,7 @@ function TodoListComponent() {
   return (
     <div>
       <h3 className='text-center mb-10'>My ToDo List</h3>
-      <div style={{minHeight: "320px"}} className='shadow relative'>
+      <div style={{ minHeight: "320px" }} className='shadow relative'>
         <div>
           <div>
             <SortingButtonComponent />
@@ -23,7 +23,7 @@ function TodoListComponent() {
             <Task />
             <Task />
           </div>
-          <div className="absolute bottom-4 right-4">
+          <div className='absolute bottom-4 right-4'>
             <button id='add-task' onClick={() => setIsOpen(true)}>
               Add Task
             </button>
