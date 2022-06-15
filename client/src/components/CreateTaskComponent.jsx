@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAtom } from "jotai";
+import { appState } from "../state";
 
 const defaulFormFields = {
   type: "",
@@ -9,9 +11,13 @@ const defaulFormFields = {
 
 const currentDate = new Date().toLocaleDateString("en-ca");
 
-function CreateTaskComponent({ }) {
+
+
+function CreateTaskComponent() {
 
   const [formFields, setFormFields] = useState(defaulFormFields);
+
+  const [tasks, setTasks] = useAtom(appState.tasks);
 
 
   const { type, taskName, limitDate, estimatedTime } = formFields;
@@ -25,7 +31,7 @@ function CreateTaskComponent({ }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formFields);
-    const response = await fetch("/api/add-task", {
+    const response = await fetch("http://localhost:8080/api/add-task", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,6 +40,7 @@ function CreateTaskComponent({ }) {
         formFields
       }
     });
+    console.log(response.data);
   }
 
   // setTasks(response.data);
