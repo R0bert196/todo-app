@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class TaskService {
@@ -33,5 +34,9 @@ public class TaskService {
 
     public List<Task> getTasks() {
         return taskRepository.findAll();
+    }
+
+    public List<Task> getSortedTasks(String direction) {
+        return Objects.equals(direction, "asc") ? taskRepository.findAllSortedAsc() : taskRepository.findAllSortedDesc();
     }
 }

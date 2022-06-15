@@ -1,14 +1,49 @@
-import MaterialIcon from 'react-google-material-icons';
+import { useState } from "react";
+import MaterialIcon from "react-google-material-icons";
+
+import { useAtom } from "jotai";
+import { appState } from "../state";
 
 function SortingButtonComponent() {
+
+  const [direction, setDirection] = useState("desc");
+  const [tasks, setTasks] = useAtom(appState.tasks);
+
+  const changeDirection = async () => {
+    console.log(direction);
+    try {
+      const request = await fetch(
+        `http://localhost:8080/api/sort?direction=${direction}`);
+      const response = await request.json();
+      console.log(response);
+      setTasks(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-      <div>
-          <div className='text-right'>  
-              <h3 className='inline'>Sort By Date</h3>
-              <MaterialIcon icon="chevron_right" size='medium' />
+    <div>
+      <div className='text-right'>
+        <button
+          onClick={() => {
+            setDirection((prevDirection) =>
+              prevDirection === "asc" ? "desc" : "asc"
+            );
+            changeDirection();
+          }}
+        >
+          <h3 className='inline mr-8'>Sort By Date</h3>
+          <div className='absolute top-0 right-0'>
+            <MaterialIcon
+              icon={"keyboard_arrow_down"}
+              size='120'
+            />
           </div>
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
 export default SortingButtonComponent;
