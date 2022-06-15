@@ -37,7 +37,17 @@ function TodoListComponent() {
           </div>
           <div className='mt-8'>
             {tasks?.map((task, index) => {
-              return <Task key={index} type={task.type} name={task.name} limitDate={task.limitDate} estimatedTime={task.estimatedTime} id={task.id} />
+              return (
+                <Task
+                  key={index}
+                  type={task.type}
+                  name={task.name}
+                  limitDate={task.limitDate}
+                  estimatedTime={task.estimatedTime}
+                  id={task.id}
+                  completed={task.completed}
+                />
+              );
            })}
           </div>
           <div className='absolute bottom-4 right-4'>

@@ -25,6 +25,10 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
   };
 
   const handleComplete = async () => {
+    if (completed) {
+      alert("Task is already marked as completed!");
+      return;
+    }
     const request = await fetch(
       `http://localhost:8080/api/complete?id=${id}&direction=${direction}`
     );
@@ -52,10 +56,10 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
           <p>{limitDate}</p>
         </div>
         <div className='border-l pl-1 w-32 text-center h-2/4'>
-          <p>{estimatedTime}</p>
+          <p>{estimatedTime} zile estimate</p>
         </div>
         <div className='border-l pl-1 w-28 text-center h-2/4'>
-          <p>{diffDays}</p>
+          <p>{diffDays} zile ramase</p>
         </div>
         <div className='border-l pl-1 h-2/4 flex gap-2'>
           <span onClick={handleComplete} className='cursor-pointer'>
