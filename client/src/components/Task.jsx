@@ -4,7 +4,6 @@ import { useAtom } from "jotai";
 import { appState } from "../state";
 
 function Task({ type, name, limitDate, estimatedTime, id, completed }) {
-
   const [tasks, setTasks] = useAtom(appState.tasks);
   const [direction] = useAtom(appState.direction);
 
@@ -14,13 +13,24 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
       return;
     }
     try {
-      const request = await fetch(`http://localhost:8080/api/delete?id=${id}&direction=${direction}`);
+      const request = await fetch(
+        `http://localhost:8080/api/delete?id=${id}&direction=${direction}`
+      );
       const response = await request.json();
       console.log(response);
       setTasks(response);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleComplete = async () => {
+    const request = await fetch(
+      `http://localhost:8080/api/complete?id=${id}&direction=${direction}`
+    );
+    const response = await request.json();
+    console.log(response);
+    setTasks(response);
   };
 
   const TODAY = new Date();
@@ -48,7 +58,7 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
           <p>{diffDays}</p>
         </div>
         <div className='border-l pl-1 h-2/4 flex gap-2'>
-          <span className='cursor-pointer'>
+          <span onClick={handleComplete} className='cursor-pointer'>
             <MaterialIcon icon='done' size='large' />
           </span>
           <span onClick={handleDelete} className='cursor-pointer'>

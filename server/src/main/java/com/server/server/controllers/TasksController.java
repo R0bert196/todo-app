@@ -43,4 +43,10 @@ public class TasksController {
         taskService.deleteTask(id);
         return ResponseEntity.ok(taskService.getSortedTasks(direction));
     }
+
+    @GetMapping("/api/complete")
+    public ResponseEntity<?> completeTask(@RequestParam long id, @RequestParam String direction) {
+        taskService.completeTask(id);
+        return ResponseEntity.ok(taskService.getSortedTasks(direction));
+    }
 }
