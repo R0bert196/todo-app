@@ -38,4 +38,9 @@ public class TasksController {
         return ResponseEntity.ok(taskService.getSortedTasks(direction));
     }
 
+    @GetMapping("/api/delete")
+    public ResponseEntity<?> deleteTask(@RequestParam long id, @RequestParam String direction) {
+        taskService.deleteTask(id);
+        return ResponseEntity.ok(taskService.getSortedTasks(direction));
+    }
 }

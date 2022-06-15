@@ -36,9 +36,8 @@ function TodoListComponent() {
             <SortingButtonComponent />
           </div>
           <div className='mt-8'>
-            {/* TODO add tasks here        */}
-            {tasks.map((task, index) => {
-              return <Task key={index} type={task.type} name={task.name} limitDate={task.limitDate} estimatedTime={task.estimatedTime} />
+            {tasks?.map((task, index) => {
+              return <Task key={index} type={task.type} name={task.name} limitDate={task.limitDate} estimatedTime={task.estimatedTime} id={task.id} />
            })}
           </div>
           <div className='absolute bottom-4 right-4'>

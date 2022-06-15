@@ -6,7 +6,7 @@ import { appState } from "../state";
 
 function SortingButtonComponent() {
 
-  const [direction, setDirection] = useState("desc");
+  const [direction, setDirection] = useAtom(appState.direction);
   const [tasks, setTasks] = useAtom(appState.tasks);
 
 

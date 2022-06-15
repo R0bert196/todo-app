@@ -28,6 +28,7 @@ public class TaskService {
                 .name(taskRequestModel.getName())
                 .type(taskRequestModel.getType())
                 .limitDate(LocalDate.parse(taskRequestModel.getLimitDate(), formatter))
+                .completed(false)
                 .build();
         return taskRepository.save(task);
     }
@@ -38,5 +39,9 @@ public class TaskService {
 
     public List<Task> getSortedTasks(String direction) {
         return Objects.equals(direction, "asc") ? taskRepository.findAllSortedAsc() : taskRepository.findAllSortedDesc();
+    }
+
+    public void deleteTask(long id) {
+        taskRepository.deleteById(id);
     }
 }
