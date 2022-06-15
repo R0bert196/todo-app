@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalComponent from "./ModalComponent";
 import SortingButtonComponent from "./SortingButtonComponent";
 
@@ -8,7 +8,24 @@ import Task from "./Task";
 
 function TodoListComponent() {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [tasks] = useAtom(appState.tasks);
+  const [tasks, setTasks] = useAtom(appState.tasks);
+
+  const renderCardsOnMount = async () => {
+    try {
+      const request = await fetch("http://localhost:8080/api/get-tasks");
+      const response = await request.json();
+      console.log(response);
+      setTasks(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  
+  useEffect(() => {
+    renderCardsOnMount();
+  }, [])
+
 
   return (
     <div>

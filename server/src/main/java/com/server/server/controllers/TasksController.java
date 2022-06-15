@@ -5,10 +5,7 @@ import com.server.server.services.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(value = "http://localhost:3000/")
@@ -27,7 +24,12 @@ public class TasksController {
         if (taskService.createTask(taskRequestModel) == null) {
             return new ResponseEntity<>("Failed to add task", HttpStatus.BAD_REQUEST);
         }
-        //TODO
+        return ResponseEntity.ok(taskService.getTasks());
+    }
+
+
+    @GetMapping("/api/get-tasks")
+    public ResponseEntity<?> getTasks() {
         return ResponseEntity.ok(taskService.getTasks());
     }
 

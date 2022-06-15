@@ -13,7 +13,7 @@ const currentDate = new Date().toLocaleDateString("en-ca");
 
 
 
-function CreateTaskComponent() {
+function CreateTaskComponent({ closeModal }) {
 
   const [formFields, setFormFields] = useState(defaulFormFields);
 
@@ -33,19 +33,22 @@ function CreateTaskComponent() {
     console.log(formFields);
     const stringData = JSON.stringify(formFields);
     console.log(stringData);
-    const request = await fetch("http://localhost:8080/api/add-task", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: 
-        stringData
+    try {
+      const request = await fetch("http://localhost:8080/api/add-task", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: stringData
       
-    });
-    const response = await request.json();
-    console.log(response)
-    setTasks(response);
+      });
+      const response = await request.json();
+      closeModal();
+      console.log(response)
+      setTasks(response);
+    } catch (error) {
+      console.log(error);
+    }  
   }
 
-  // setTasks(response.data);
 
   return (
     <>

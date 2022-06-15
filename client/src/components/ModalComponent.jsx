@@ -10,17 +10,18 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "50%",
   },
 };
 Modal.setAppElement("#root");
 
 function ModalComponent({ modalIsOpen, setIsOpen }) {
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
   }
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
   }
 
@@ -31,7 +32,7 @@ return (
       onRequestClose={closeModal}
       style={customStyles}
     >
-      <CreateTaskComponent />
+      <CreateTaskComponent closeModal={closeModal} />
       {/* <CreateTaskComponent /> */}
 
     </Modal>
