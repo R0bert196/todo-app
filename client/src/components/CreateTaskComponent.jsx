@@ -31,16 +31,18 @@ function CreateTaskComponent() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formFields);
-    const response = await fetch("http://localhost:8080/api/add-task", {
+    const stringData = JSON.stringify(formFields);
+    console.log(stringData);
+    const request = await fetch("http://localhost:8080/api/add-task", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {
-        formFields
-      }
+      headers: { 'Content-Type': 'application/json' },
+      body: 
+        stringData
+      
     });
-    console.log(response.data);
+    const response = await request.json();
+    console.log(response)
+    setTasks(response);
   }
 
   // setTasks(response.data);
