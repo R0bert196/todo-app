@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -22,6 +23,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "update task set completed = true where id = :id", nativeQuery = true)
-    void setTaskCompleted(@Param("id") long id);
+    @Query(value = "update task set completed = true, actual_days = :actualDays, date_completed = :now where id = :id", nativeQuery = true)
+    void setTaskCompleted(@Param("id") long id, @Param("actualDays") long actualDays, @Param("now") LocalDate now);
 }

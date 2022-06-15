@@ -24,5 +24,7 @@ public class Task {
     private LocalDate limitDate;
     private long estimatedTime;
     private boolean completed;
+    private Long actualDays;
+    private LocalDate dateCompleted;
 
 }

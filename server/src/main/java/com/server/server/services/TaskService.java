@@ -29,6 +29,8 @@ public class TaskService {
                 .type(taskRequestModel.getType())
                 .limitDate(LocalDate.parse(taskRequestModel.getLimitDate(), formatter))
                 .completed(false)
+                .actualDays(null)
+                .dateCompleted(null)
                 .build();
         return taskRepository.save(task);
     }
@@ -45,7 +47,8 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
-    public void completeTask(long id) {
-        taskRepository.setTaskCompleted(id);
+    public void completeTask(long id, long actualDays) {
+        LocalDate now = LocalDate.now();
+        taskRepository.setTaskCompleted(id, actualDays, now);
     }
 }

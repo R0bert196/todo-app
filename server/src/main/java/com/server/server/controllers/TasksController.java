@@ -45,8 +45,8 @@ public class TasksController {
     }
 
     @GetMapping("/api/complete")
-    public ResponseEntity<?> completeTask(@RequestParam long id, @RequestParam String direction) {
-        taskService.completeTask(id);
+    public ResponseEntity<?> completeTask(@RequestParam long id, @RequestParam String direction, @RequestParam long actualDays) {
+        taskService.completeTask(id, actualDays);
         return ResponseEntity.ok(taskService.getSortedTasks(direction));
     }
 }
