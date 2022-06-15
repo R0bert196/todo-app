@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MaterialIcon from "react-google-material-icons";
 
 import { useAtom } from "jotai";
@@ -8,6 +8,7 @@ function SortingButtonComponent() {
 
   const [direction, setDirection] = useState("desc");
   const [tasks, setTasks] = useAtom(appState.tasks);
+
 
   const changeDirection = async () => {
     console.log(direction);
@@ -22,6 +23,10 @@ function SortingButtonComponent() {
     }
   };
 
+  useEffect(() => {
+    changeDirection();
+  }, [direction])
+
   return (
     <div>
       <div className='text-right'>
@@ -30,13 +35,12 @@ function SortingButtonComponent() {
             setDirection((prevDirection) =>
               prevDirection === "asc" ? "desc" : "asc"
             );
-            changeDirection();
           }}
         >
           <h3 className='inline mr-8'>Sort By Date</h3>
           <div className='absolute top-0 right-0'>
             <MaterialIcon
-              icon={"keyboard_arrow_down"}
+              icon={direction === "desc" ? "keyboard_arrow_down" : "keyboard_arrow_up"}
               size='120'
             />
           </div>
