@@ -83,17 +83,17 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
       >
         <p>{type}</p>
       </div>
-      <div className='flex mt-2'>
+      <div className='flex mt-2 text-center'>
         <div className='w-56 text-center h-2/4'>
           <p>{name}</p>
         </div>
-        <div className='border-l pl-1 w-28 text-center h-2/4'>
+        <div className='border-l pl-1 w-28 h-2/4'>
           <p>{limitDate}</p>
         </div>
-        <div className='border-l pl-1 w-32 text-center h-2/4'>
+        <div className='border-l pl-1 w-32 h-2/4'>
           <p>{estimatedTime} estimated days</p>
         </div>
-        <div className='border-l pl-1 w-28 text-center h-2/4'>
+        <div className='border-l pl-1 w-28 h-2/4'>
           <p>{diffDays} left days</p>
         </div>
         <div className='border-l pl-1 h-2/4 flex gap-2'>

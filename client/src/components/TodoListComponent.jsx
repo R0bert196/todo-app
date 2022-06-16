@@ -36,6 +36,12 @@ function TodoListComponent() {
           <div>
             <SortingButtonComponent />
           </div>
+          <div className='flex text-center font-bold text-lg mt-4'>
+            <p className='w-56 '>Name</p>
+            <p className='w-28'>Limit Date</p>
+            <p className='w-32'>Estimate Days</p>
+            <p className='w-28'>Left Days</p>
+          </div>
           <div className='mt-8'>
             {tasks?.map((task, index) => {
               return (
