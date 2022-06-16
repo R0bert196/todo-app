@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { appState } from "../state";
 
 const defaulFormFields = {
-  type: "",
+  type: "Hobby",
   name: "",
   limitDate: "",
   estimatedTime: "",
@@ -53,11 +53,11 @@ function CreateTaskComponent({ closeModal }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='flex gap-3'>
+        <div className='flex gap-5'>
           <div>
             <label>
-              Task Type:
-              <select onChange={handleChange} name='type' value={type}>
+              Type:
+              <select className="border px-2" required onChange={handleChange} name='type' value={type}>
                 <option>Hobby</option>
                 <option>Home</option>
                 <option>Work</option>
@@ -66,9 +66,11 @@ function CreateTaskComponent({ closeModal }) {
           </div>
           <div>
             <label>
-              Task Name:
+              Name:
               <input
+                className="border pl-2"
                 type='text'
+                required
                 onChange={handleChange}
                 name='name'
                 value={name}
@@ -79,7 +81,9 @@ function CreateTaskComponent({ closeModal }) {
             <label>
               Limit Date:
               <input
+                className="border w-32 px-2"
                 type='date'
+                required
                 onChange={handleChange}
                 name='limitDate'
                 value={limitDate}
@@ -91,7 +95,9 @@ function CreateTaskComponent({ closeModal }) {
             <label>
               Estimated Days:
               <input
+                className="border w-32 pl-2"
                 type='number'
+                required
                 onChange={handleChange}
                 name='estimatedTime'
                 value={estimatedTime}
@@ -100,8 +106,8 @@ function CreateTaskComponent({ closeModal }) {
             </label>
           </div>
         </div>
-        <div>
-          <button type="submit">Submit</button>
+        <div className="text-right mt-8">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded" type="submit">Submit</button>
         </div>
       </form>
     </>

@@ -19,18 +19,19 @@ function TodoListComponent() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  
   useEffect(() => {
     renderCardsOnMount();
-  }, [])
-
+  }, []);
 
   return (
     <div>
       <h2 className='text-center mb-10 font-bold text-xl'>My ToDo List</h2>
-      <div style={{ minHeight: "320px" }} className='shadow border relative'>
+      <div
+        style={{ height: "400px" }}
+        className='shadow border overflow-x-auto'
+      >
         <div>
           <div>
             <SortingButtonComponent />
@@ -48,16 +49,19 @@ function TodoListComponent() {
                   completed={task.completed}
                 />
               );
-           })}
+            })}
           </div>
-          <div className='absolute bottom-4 right-4'>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setIsOpen(true)}>
-              Add Task
-            </button>
-          </div>
-          <ModalComponent modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
+      <div className='text-right mt-4'>
+        <button
+          className='bg-blue-600 text-white px-4 py-2 rounded'
+          onClick={() => setIsOpen(true)}
+        >
+          Add Task
+        </button>
+      </div>
+      <ModalComponent modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
     </div>
   );
 }
