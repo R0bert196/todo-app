@@ -29,8 +29,8 @@ function TodoListComponent() {
 
   return (
     <div>
-      <h3 className='text-center mb-10'>My ToDo List</h3>
-      <div style={{ minHeight: "320px" }} className='shadow relative'>
+      <h2 className='text-center mb-10 font-bold text-xl'>My ToDo List</h2>
+      <div style={{ minHeight: "320px" }} className='shadow border relative'>
         <div>
           <div>
             <SortingButtonComponent />
@@ -51,7 +51,7 @@ function TodoListComponent() {
            })}
           </div>
           <div className='absolute bottom-4 right-4'>
-            <button id='add-task' onClick={() => setIsOpen(true)}>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setIsOpen(true)}>
               Add Task
             </button>
           </div>

@@ -28,9 +28,10 @@ function SortingButtonComponent() {
   }, [direction])
 
   return (
-    <div>
+    <div className="mt-2 mr-1">
       <div className='text-right'>
         <button
+          className="bg-blue-600 text-white px-4 py-2 rounded"
           onClick={() => {
             setDirection((prevDirection) =>
               prevDirection === "asc" ? "desc" : "asc"
@@ -38,7 +39,7 @@ function SortingButtonComponent() {
           }}
         >
           <h3 className='inline mr-8'>Sort By Date</h3>
-          <div className='absolute top-0 right-0'>
+          <div className='absolute top-4 right-1'>
             <MaterialIcon
               icon={direction === "desc" ? "keyboard_arrow_down" : "keyboard_arrow_up"}
               size='120'
