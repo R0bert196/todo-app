@@ -1,9 +1,9 @@
 // import MaterialIcon, {colorPalette} from "react-google-material-icons";
-import MaterialIcon, { colorPalette } from "material-icons-react";
+import MaterialIcon from "material-icons-react";
 
 import { useAtom } from "jotai";
 import { appState } from "../state";
-import { useEffect } from "react";
+
 
 function Task({ type, name, limitDate, estimatedTime, id, completed }) {
   const [tasks, setTasks] = useAtom(appState.tasks);
@@ -19,10 +19,9 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
         `http://localhost:8080/api/delete?id=${id}&direction=${direction}`
       );
       const response = await request.json();
-      console.log(response);
       setTasks(response);
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   };
 
@@ -39,7 +38,6 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
       `http://localhost:8080/api/complete?id=${id}&direction=${direction}&actualDays=${actualDays}`
     );
     const response = await request.json();
-    console.log(response);
     setTasks(response);
   };
 
@@ -63,9 +61,9 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
   const getTypeColor = () => {
     if (type === "Work") {
       return "#00FF00";
-    } else if (type == "Home") {
+    } else if (type === "Home") {
       return "#0000FF";
-    } else if (type == "Hobby") {
+    } else if (type === "Hobby") {
       return "#FFA500";
     }
   };
