@@ -19,36 +19,55 @@ function TodoListComponent() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  
   useEffect(() => {
     renderCardsOnMount();
-  }, [])
-
+  }, []);
 
   return (
     <div>
-      <h3 className='text-center mb-10'>My ToDo List</h3>
-      <div style={{ minHeight: "320px" }} className='shadow relative'>
+      <h2 className='text-center mb-10 font-bold text-xl'>My ToDo List</h2>
+      <div
+        style={{ height: "400px" }}
+        className='shadow border py-4 overflow-x-auto'
+      >
         <div>
           <div>
             <SortingButtonComponent />
           </div>
+          <div className='flex text-center font-bold text-lg mt-4'>
+            <p className='w-56 '>Name</p>
+            <p className='w-28'>Limit Date</p>
+            <p className='w-32'>Estimate Days</p>
+            <p className='w-28'>Left Days</p>
+          </div>
           <div className='mt-8'>
-            {/* TODO add tasks here        */}
-            {tasks.map((task, index) => {
-              return <Task key={index} type={task.type} name={task.name} limitDate={task.limitDate} estimatedTime={task.estimatedTime} />
-           })}
+            {tasks?.map((task, index) => {
+              return (
+                <Task
+                  key={index}
+                  type={task.type}
+                  name={task.name}
+                  limitDate={task.limitDate}
+                  estimatedTime={task.estimatedTime}
+                  id={task.id}
+                  completed={task.completed}
+                />
+              );
+            })}
           </div>
-          <div className='absolute bottom-4 right-4'>
-            <button id='add-task' onClick={() => setIsOpen(true)}>
-              Add Task
-            </button>
-          </div>
-          <ModalComponent modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
+      <div className='text-right mt-4'>
+        <button
+          className='bg-blue-600 text-white px-4 py-2 rounded'
+          onClick={() => setIsOpen(true)}
+        >
+          Add Task
+        </button>
+      </div>
+      <ModalComponent modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
     </div>
   );
 }

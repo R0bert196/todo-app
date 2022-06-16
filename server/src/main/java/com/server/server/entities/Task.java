@@ -23,5 +23,8 @@ public class Task {
     private String name;
     private LocalDate limitDate;
     private long estimatedTime;
+    private boolean completed;
+    private Long actualDays;
+    private LocalDate dateCompleted;
 
 }

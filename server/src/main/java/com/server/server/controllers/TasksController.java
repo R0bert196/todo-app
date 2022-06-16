@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(value = "http://localhost:3000/")
+@CrossOrigin(value = "http://localhost:3000")
 public class TasksController {
 
     final
@@ -33,4 +33,20 @@ public class TasksController {
         return ResponseEntity.ok(taskService.getTasks());
     }
 
+    @GetMapping("/api/sort")
+    public ResponseEntity<?> getSortedTasks(@RequestParam String direction) {
+        return ResponseEntity.ok(taskService.getSortedTasks(direction));
+    }
+
+    @GetMapping("/api/delete")
+    public ResponseEntity<?> deleteTask(@RequestParam long id, @RequestParam String direction) {
+        taskService.deleteTask(id);
+        return ResponseEntity.ok(taskService.getSortedTasks(direction));
+    }
+
+    @GetMapping("/api/complete")
+    public ResponseEntity<?> completeTask(@RequestParam long id, @RequestParam String direction, @RequestParam long actualDays) {
+        taskService.completeTask(id, actualDays);
+        return ResponseEntity.ok(taskService.getSortedTasks(direction));
+    }
 }
