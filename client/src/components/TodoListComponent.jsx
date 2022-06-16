@@ -30,7 +30,7 @@ function TodoListComponent() {
       <h2 className='text-center mb-10 font-bold text-xl'>My ToDo List</h2>
       <div
         style={{ height: "400px" }}
-        className='shadow border overflow-x-auto'
+        className='shadow border py-4 overflow-x-auto'
       >
         <div>
           <div>
