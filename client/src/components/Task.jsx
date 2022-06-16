@@ -34,6 +34,7 @@ function Task({ type, name, limitDate, estimatedTime, id, completed }) {
     const actualDays = window.prompt(
       "How many days did it take to complete this task?"
     );
+    if (!actualDays) return;
     const request = await fetch(
       `http://localhost:8080/api/complete?id=${id}&direction=${direction}&actualDays=${actualDays}`
     );
