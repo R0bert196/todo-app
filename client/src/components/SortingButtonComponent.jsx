@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MaterialIcon from "react-google-material-icons";
 
 import { useAtom } from "jotai";
@@ -11,12 +11,10 @@ function SortingButtonComponent() {
 
 
   const changeDirection = async () => {
-    console.log(direction);
     try {
       const request = await fetch(
         `http://localhost:8080/api/sort?direction=${direction}`);
       const response = await request.json();
-      console.log(response);
       setTasks(response);
     } catch (error) {
       console.log(error);

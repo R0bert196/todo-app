@@ -14,7 +14,6 @@ function TodoListComponent() {
     try {
       const request = await fetch("http://localhost:8080/api/get-tasks");
       const response = await request.json();
-      console.log(response);
       setTasks(response);
     } catch (error) {
       console.log(error);

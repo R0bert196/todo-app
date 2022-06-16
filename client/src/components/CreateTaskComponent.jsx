@@ -30,9 +30,7 @@ function CreateTaskComponent({ closeModal }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formFields);
     const stringData = JSON.stringify(formFields);
-    console.log(stringData);
     try {
       const request = await fetch("http://localhost:8080/api/add-task", {
         method: "POST",
@@ -42,7 +40,6 @@ function CreateTaskComponent({ closeModal }) {
       });
       const response = await request.json();
       closeModal();
-      console.log(response)
       setTasks(response);
     } catch (error) {
       console.log(error);
